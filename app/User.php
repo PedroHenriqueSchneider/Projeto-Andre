@@ -35,7 +35,6 @@ class User extends Authenticatable
         'email',
         'password',
         'cnpj',
-        // 'password_token',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -90,10 +89,11 @@ class User extends Authenticatable
     //     $this->save();
     // }
     public function generateRandomPassword() //envio de senha randomica para o usuario
-    {        
-        $this->password = null;
-        $this->password =  Hash::make("1234");
+    {   
+        $password = rand(100000, 999999);
+        $this->password =  Hash::make($password);
         $this->save();
+        return $password;
     }
 
     /**

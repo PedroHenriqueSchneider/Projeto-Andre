@@ -15,8 +15,8 @@ class UserObserver
      */
     public function created(User $user)
     {
-        $user->generateRandomPassword();
-        $user->notify(new NotificarNovoUsuario());
+        $password = $user->generateRandomPassword();
+        $user->notify(new NotificarNovoUsuario($password));
     }
 
     /**

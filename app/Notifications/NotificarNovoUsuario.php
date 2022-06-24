@@ -10,15 +10,15 @@ use Illuminate\Notifications\Messages\MailMessage;
 class NotificarNovoUsuario extends Notification
 {
     use Queueable;
-
+    public $password;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($password)
     {
-        //
+        $this->password = $password;
     }
 
     /**
@@ -41,7 +41,7 @@ class NotificarNovoUsuario extends Notification
     public function toMail($notifiable)
     {   
         return (new MailMessage)
-        ->line('A sua senha é '.$notifiable->password)
+        ->line('A sua senha é '.$this->password)
         ->action('Clique aqui', route('login'));
     }
 
