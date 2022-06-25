@@ -110,12 +110,12 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(function() {
-  let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
-  let csvButtonTrans = '{{ trans('global.datatables.csv') }}'
+  // let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
+  // let csvButtonTrans = '{{ trans('global.datatables.csv') }}'
   let excelButtonTrans = '{{ trans('global.datatables.excel') }}'
-  let pdfButtonTrans = '{{ trans('global.datatables.pdf') }}'
-  let printButtonTrans = '{{ trans('global.datatables.print') }}'
-  let colvisButtonTrans = '{{ trans('global.datatables.colvis') }}'
+  // let pdfButtonTrans = '{{ trans('global.datatables.pdf') }}'
+  // let printButtonTrans = '{{ trans('global.datatables.print') }}'
+  // let colvisButtonTrans = '{{ trans('global.datatables.colvis') }}'
 
   let languages = {
     'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json'
@@ -144,22 +144,22 @@
     pageLength: 100,
     dom: 'lBfrtip<"actions">',
     buttons: [
-      {
-        extend: 'copy',
-        className: 'btn-default',
-        text: copyButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
-      {
-        extend: 'csv',
-        className: 'btn-default',
-        text: csvButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
+      // {
+      //   extend: 'copy',
+      //   className: 'btn-default',
+      //   text: copyButtonTrans,
+      //   exportOptions: {
+      //     columns: ':visible'
+      //   }
+      // },
+      // {
+      //   extend: 'csv',
+      //   className: 'btn-default',
+      //   text: csvButtonTrans,
+      //   exportOptions: {
+      //     columns: ':visible'
+      //   }
+      // },
       {
         extend: 'excel',
         className: 'btn-default',
@@ -168,30 +168,30 @@
           columns: ':visible'
         }
       },
-      {
-        extend: 'pdf',
-        className: 'btn-default',
-        text: pdfButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
-      {
-        extend: 'print',
-        className: 'btn-default',
-        text: printButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
-      {
-        extend: 'colvis',
-        className: 'btn-default',
-        text: colvisButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      }
+      // {
+      //   extend: 'pdf',
+      //   className: 'btn-default',
+      //   text: pdfButtonTrans,
+      //   exportOptions: {
+      //     columns: ':visible'
+      //   }
+      // },
+      // {
+      //   extend: 'print',
+      //   className: 'btn-default',
+      //   text: printButtonTrans,
+      //   exportOptions: {
+      //     columns: ':visible'
+      //   }
+      // },
+      // {
+      //   extend: 'colvis',
+      //   className: 'btn-default',
+      //   text: colvisButtonTrans,
+      //   exportOptions: {
+      //     columns: ':visible'
+      //   }
+      // }
     ]
   });
 

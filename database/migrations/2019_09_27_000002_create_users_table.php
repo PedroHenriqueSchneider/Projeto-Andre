@@ -16,6 +16,8 @@ class CreateUsersTable extends Migration
             $table->string('email');
 
             $table->datetime('email_verified_at')->nullable();
+            
+            $table->string('cnpj')->nullable();
 
             $table->string('password');
 

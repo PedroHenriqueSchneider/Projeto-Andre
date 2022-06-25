@@ -2,12 +2,12 @@
 
 return [
     'userManagement' => [
-        'title'          => 'User management',
+        'title'          => 'Gestão do usúario',
         'title_singular' => 'User management',
     ],
     'permission'     => [
-        'title'          => 'Permissions',
-        'title_singular' => 'Permission',
+        'title'          => 'Permissões',
+        'title_singular' => 'Permissão',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
@@ -22,14 +22,14 @@ return [
         ],
     ],
     'role'           => [
-        'title'          => 'Roles',
-        'title_singular' => 'Role',
+        'title'          => 'Cargos',
+        'title_singular' => 'Cargo',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => '',
-            'title'              => 'Title',
+            'title'              => 'Título',
             'title_helper'       => '',
-            'permissions'        => 'Permissions',
+            'permissions'        => 'Permissões',
             'permissions_helper' => '',
             'created_at'         => 'Created at',
             'created_at_helper'  => '',
@@ -40,20 +40,22 @@ return [
         ],
     ],
     'user'           => [
-        'title'          => 'Users',
-        'title_singular' => 'User',
+        'title'          => 'Usuários',
+        'title_singular' => 'Usuário',
         'fields'         => [
             'id'                       => 'ID',
             'id_helper'                => '',
-            'name'                     => 'Name',
+            'name'                     => 'Nome',
             'name_helper'              => '',
+            'cnpj'                     => 'CNPJ',
+            'cnpj_helper'              =>'',
             'email'                    => 'Email',
             'email_helper'             => '',
             'email_verified_at'        => 'Email verified at',
             'email_verified_at_helper' => '',
-            'password'                 => 'Password',
+            'password'                 => 'Senha',
             'password_helper'          => '',
-            'roles'                    => 'Roles',
+            'roles'                    => 'Cargos',
             'roles_helper'             => '',
             'remember_token'           => 'Remember Token',
             'remember_token_helper'    => '',
