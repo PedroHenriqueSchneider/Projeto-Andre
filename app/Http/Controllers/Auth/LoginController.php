@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Notifications\TwoFactorCode;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class LoginController extends Controller
 {
@@ -50,5 +51,10 @@ class LoginController extends Controller
     {
         $user->generateTwoFactorCode();
         $user->notify(new TwoFactorCode());
+        $user->update([
+            'last_login_at' => Carbon::now()->toDateTimeString(),
+            'last_login_ip' => $request->getClientIp()
+        ]);
     }
+    
 }
