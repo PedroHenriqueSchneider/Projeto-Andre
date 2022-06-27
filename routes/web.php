@@ -19,8 +19,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
-
     // Historic
-     Route::delete('historic/destroy', 'historicController@massDestroy')->name('historic.massDestroy');
-     Route::resource('historic', 'historicsController');
+    Route::resource('historics', 'HistoricsController');
 });
+
+    // Route::namespace('Admin')->group(function(){
+    //     Route::get('/historic', 'HistoricsController');
+    // });

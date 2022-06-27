@@ -49,16 +49,14 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('user_access')
                             <li class="nav-item">
-                                <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
-                                    <i class="fa-fw fas fa-user nav-icon">
+                                <a href="{{ route("admin.historics.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
+                                <i class="fa fa-book fa-fw nav-icon">
 
                                     </i>
-                                Histórico de acessos
+                                    Histórico de acesso
                                 </a>
                             </li>
-                        @endcan
                     </ul>
                 </li>
             @endcan
