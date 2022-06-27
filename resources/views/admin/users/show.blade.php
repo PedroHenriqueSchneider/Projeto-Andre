@@ -36,12 +36,20 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.user.fields.cnpj') }}
+                        </th>
+                        <td>
+                            {{ $user->cnpj }}
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <th>
                             {{ trans('cruds.user.fields.email_verified_at') }}
                         </th>
                         <td>
                             {{ $user->email_verified_at }}
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>
                             Roles

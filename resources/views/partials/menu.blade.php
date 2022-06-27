@@ -54,7 +54,7 @@
                                 <i class="fa fa-book fa-fw nav-icon">
 
                                     </i>
-                                    Histórico de acesso
+                                    Histórico de acessos
                                 </a>
                             </li>
                     </ul>
