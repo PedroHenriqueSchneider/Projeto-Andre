@@ -8,6 +8,7 @@ use App\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use DB;
 
 class HistoricsController extends Controller
 {
@@ -54,8 +55,13 @@ class HistoricsController extends Controller
             abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
     
             $user->load('roles');
-    
-            return view('admin.historics.show', compact('user'));
+
+            if(!isset($arrLogins)) 
+                $arrLogins = array();
+        
+            $logados = DB::table('historics')->select('email', 'name', 'last_login_at')->get();
+            array_push($arrLogins, $logados);
+            return view('admin.historics.show', ['logado' => $arrLogins]);
 
     }
 

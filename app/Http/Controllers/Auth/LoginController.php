@@ -7,6 +7,7 @@ use App\Notifications\TwoFactorCode;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use DB;
 
 class LoginController extends Controller
 {
@@ -55,6 +56,6 @@ class LoginController extends Controller
             'last_login_at' => Carbon::now()->toDateTimeString(),
             'last_login_ip' => $request->getClientIp()
         ]);
+        DB::insert('INSERT INTO historics (name, email, last_login_at) VALUES (?, ?, ?)', [$user->name, $user->email, $user->last_login_at]);
     }
-    
 }

@@ -51,7 +51,7 @@ class RolesApiController extends Controller
     {
         abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $role->delete();
+        $role->ForceDelete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

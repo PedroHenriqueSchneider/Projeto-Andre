@@ -3,32 +3,44 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.historic.title') }}
+    {{ trans('global.list') }}  de {{ trans('cruds.historic.title') }} 
     </div>
 
     <div class="card-body">
-        <div class="mb-2">
-            <table class="table table-bordered table-striped">
-                <tbody>
+        <div class="table-responsive">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead>
                     <tr>
+                        <th width="10">
+
+                        </th>
                         <th>
                             {{ trans('cruds.historic.fields.last_login_at') }}
                         </th>
-                        <td>
-                            {{ $user->last_login_at }}
-                        </td>
+                        
+                        <th>
+                            &nbsp;
+                        </th>
                     </tr>
-                        <td>
-                            @foreach($user->roles as $id => $roles)
-                                <span class="label label-info label-many">{{ $roles->title }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
+                </thead>
+                <tbody>
+                   @foreach($logado as $log)
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ $log }}
+                            </td>
+                            
+                            <td>
+
+                            </td>
+
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
-            <a style="margin-top:20px;" class="btn btn-default" href="{{ url()->previous() }}">
-                {{ trans('global.back_to_list') }}
-            </a>
         </div>
 
 
