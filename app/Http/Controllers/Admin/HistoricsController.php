@@ -59,7 +59,7 @@ class HistoricsController extends Controller
             if(!isset($arrLogins)) 
                 $arrLogins = array();
         
-            $logados = DB::table('historics')->select('email', 'name', 'last_login_at')->get();
+            $logados = DB::table('historics')->select('email', 'name', 'last_login_at', 'id')->get();
             array_push($arrLogins, $logados);
             return view('admin.historics.show', ['logado' => $arrLogins]);
 

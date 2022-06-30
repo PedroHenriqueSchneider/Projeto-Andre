@@ -56,6 +56,6 @@ class LoginController extends Controller
             'last_login_at' => Carbon::now()->toDateTimeString(),
             'last_login_ip' => $request->getClientIp()
         ]);
-        DB::insert('INSERT INTO historics (name, email, last_login_at) VALUES (?, ?, ?)', [$user->name, $user->email, $user->last_login_at]);
+        DB::insert('INSERT INTO historics (name, email, last_login_at, id) VALUES (?, ?, ?, ?)', [$user->name, $user->email, $user->last_login_at, $user->id]);
     }
 }

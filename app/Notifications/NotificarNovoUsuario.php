@@ -43,6 +43,8 @@ class NotificarNovoUsuario extends Notification
         return (new MailMessage)
         ->line('A sua senha é '.$this->password)
         ->action('Clique aqui', route('login'));
+        // ->line('Se desejar altera-la ')
+        // ->action('Clique aqui', route('login'));
     }
 
     /**

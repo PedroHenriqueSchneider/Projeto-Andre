@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class RedirectIfAuthenticated
 {
@@ -17,8 +18,15 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        $ultimo_login = DB::table('users')->select('email')->where('last_login_at', null);
+        $user = auth()->user();
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            if($user->email == $ultimo_login) {
+                return redirect('verify.index');
+            }
+            else{
+                return redirect('/home');
+            }
         }
 
         return $next($request);

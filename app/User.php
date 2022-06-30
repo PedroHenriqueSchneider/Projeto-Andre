@@ -90,13 +90,23 @@ class User extends Authenticatable
     //     $this->password_token = rand(100000, 999999);
     //     $this->save();
     // }
-    public function generateRandomPassword() //envio de senha randomica para o usuario
-    {   
-        $password = rand(100000, 999999);
-        $this->password =  Hash::make($password);
-        $this->save();
-        return $password;
-    }
+    function generateRandomPassword($qtyCaraceters = 8)
+{
+    $smallLetters = str_shuffle('abcdefghijklmnopqrstuvwxyz');
+    $capitalLetters = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
+    $numbers = (((date('Ymd') / 12) * 24) + mt_rand(800, 9999));
+    $numbers .= 1234567890;
+
+    $specialCharacters = str_shuffle('!@#$%*-');
+
+    $characters = $capitalLetters.$smallLetters.$numbers.$specialCharacters;
+    $password = substr(str_shuffle($characters), 0, $qtyCaraceters);
+
+    $this->password =  Hash::make($password);
+    $this->save();
+    return $password;
+}
 
     /**
      * Reset the MFA code generated earlier
