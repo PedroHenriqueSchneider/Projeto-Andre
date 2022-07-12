@@ -9,6 +9,9 @@
                         <p class="alert alert-info">
                             {{ \Session::get('message') }}
                         </p>
+                        <p>
+                            {{ oi }}
+                        </p>
                     @endif
                     <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}

@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 
+<!-- View responsável pela parte de histórico único de cada usuário. -->
+
 <div class="card">
     <div class="card-header">
     {{ trans('global.list') }}  de {{ trans('cruds.historic.title') }} 

@@ -36,6 +36,7 @@ class TwoFactorController extends Controller
         return redirect()->back()->withErrors(['two_factor_code' => 'The two factor code you have entered does not match']);
     }
 
+    // Função reenvia o código de autenticação para o email do usuário.
     public function resend()
     {
         $user = auth()->user();

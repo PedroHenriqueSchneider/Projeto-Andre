@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use DB;
 
+// Controller responsável pelo histórico de entrada dos usuários
+
 class HistoricsController extends Controller
 {
     /**
@@ -17,6 +19,7 @@ class HistoricsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // função pega todos os historicos de usuários e retorna para a view index ter acesso.
     public function index()
     {
         $historics = User::all();
@@ -50,6 +53,11 @@ class HistoricsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     // função cria um array contendo os dados de email, nome, data de último login e id do usuário.
+     // Adiciona dentro desse array os dados referidos ao ultimo login de cada um.
+     // Trata essas informações do tipo json.
+     // Retorna para a view show essas informações.
     public function show(User $user)
     {
             abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -61,7 +69,8 @@ class HistoricsController extends Controller
         
             $logados = DB::table('historics')->select('email', 'name', 'last_login_at', 'id')->get();
             array_push($arrLogins, $logados);
-            return view('admin.historics.show', ['logado' => $arrLogins]);
+            $ls = json_decode($arrLogins[0], true);
+            return view('admin.historics.show', ['logado' => $ls]);
 
     }
 

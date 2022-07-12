@@ -40,7 +40,7 @@ class UsersController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    public function edit(User $user)
+    public function edit(User $user, Request $request)
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -51,11 +51,17 @@ class UsersController extends Controller
         return view('admin.users.edit', compact('roles', 'user'));
     }
 
+    // Função atualiza os dados do usuário, como a sua senha definida pelo admin.
+    // Retorna para a rota index do usuário.
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->all());
+
+        $data = $request->all();
+        $data['password'] = bcrypt(($data['password']));
+        $user->update($data);
         $user->roles()->sync($request->input('roles', []));
 
+        
         return redirect()->route('admin.users.index');
     }
 

@@ -16,23 +16,22 @@ class LoginController extends Controller
     | Login Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
+    | Esse controller é responsável por autenticar os usuários da aplicação e
+    | redireciona-los para a página principal. 
     |
     */
 
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Redireciona o usuário depois do login.
      *
      * @var string
      */
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
+     * Cria uma nova instância de controller.
      *
      * @return void
      */
@@ -42,12 +41,19 @@ class LoginController extends Controller
     }
 
     /**
-     * The user has been authenticated.
+     * O usuário foi autenticado.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $user
      * @return mixed
      */
+
+    // Função responsável pela autenticação dos usuários.
+    // Gera o código de fator.
+    // Notifica esse novo código ao email do usuário.
+    // Atualiza os dados da data do último login e o ip de onde está logando.
+    // Insere na tabela "historics" os dados de nome, email e a data de último login
+    //para que possa ser tratado na inserção do array de histórico dos usuários.
     protected function authenticated(Request $request, $user)
     {
         $user->generateTwoFactorCode();
@@ -57,5 +63,7 @@ class LoginController extends Controller
             'last_login_ip' => $request->getClientIp()
         ]);
         DB::insert('INSERT INTO historics (name, email, last_login_at, id) VALUES (?, ?, ?, ?)', [$user->name, $user->email, $user->last_login_at, $user->id]);
+        
     }
+
 }

@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 
+<!-- View responsável pela parte de histórico dos usuários -->
+
 <div class="card">
     <div class="card-header">
     {{ trans('global.list') }}  de {{ trans('cruds.historic.title') }} 
@@ -12,29 +14,28 @@
                 <thead>
                     <tr>
                         <th width="10">
-
+                            {{ trans('Usuário') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.historic.fields.last_login_at') }}
+                        <th width="10">
+                            {{ trans('Email') }}
+                        </th>
+                        <th width="10">
+                            {{ trans('Ultimo Login') }}
                         </th>
                         
-                        <th>
-                            &nbsp;
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
                    @foreach($logado as $log)
-                        <tr>
+                        <tr data-entry-id="{{ $log['name'] }}">
                             <td>
-
+                                {{ $log['name'] }}
                             </td>
                             <td>
-                                {{ $log }}
+                                {{ $log['email'] }}
                             </td>
-                            
                             <td>
-
+                                {{ $log['last_login_at'] }}
                             </td>
 
                         </tr>
