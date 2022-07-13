@@ -54,11 +54,12 @@ class HistoricsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
      // função cria um array contendo os dados de email, nome, data de último login e id do usuário.
      // Adiciona dentro desse array os dados referidos ao ultimo login de cada um.
      // Trata essas informações do tipo json.
      // Retorna para a view show essas informações.
-    public function show(User $user)
+    public function show(User $user, Request $request)
     {
             abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
     
@@ -70,7 +71,14 @@ class HistoricsController extends Controller
             $logados = DB::table('historics')->select('email', 'name', 'last_login_at', 'id')->get();
             array_push($arrLogins, $logados);
             $ls = json_decode($arrLogins[0], true);
-            return view('admin.historics.show', ['logado' => $ls]);
+            $modifiedLs = array_reverse($ls);
+            $newArr = array();
+            for($i = 0; $i < 10; $i++) {
+                $newArr[$i] = $modifiedLs[$i];
+            }
+            $url = $request->path();
+            $nome = explode('/', $url);
+            return view('admin.historics.show')->with('logado', $newArr)->with('nominho', $nome[2]);
 
     }
 

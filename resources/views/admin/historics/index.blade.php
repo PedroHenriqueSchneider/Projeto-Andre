@@ -13,9 +13,6 @@
             <table class=" table table-bordered table-striped table-hover datatable datatable-User">
                 <thead>
                     <tr>
-                        <th width="10">
-
-                        </th>
                         <th>
                             {{ trans('cruds.historic.fields.id') }}
                         </th>
@@ -32,16 +29,13 @@
                         {{ trans('cruds.user.fields.roles') }}
                         </th>
                         <th>
-                            &nbsp;
+                            {{ "*" }}
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($historics as $key =>$historics)
+                    @foreach($historics as $key => $historics)
                         <tr data-entry-id="{{$historics->id }}">
-                            <td>
-
-                            </td>
                             <td>
                                 {{$historics->id ?? '' }}
                             </td>
@@ -61,7 +55,7 @@
                             </td>
                             <td>
                                  @can('user_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.historics.show',$historics->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.historics.show',$historics->name) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan

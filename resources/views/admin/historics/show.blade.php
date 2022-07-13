@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<!-- View responsável pela parte de histórico dos usuários -->
+<!-- View responsável pela parte de histórico dos usuários em geral -->
 
 <div class="card">
     <div class="card-header">
@@ -26,19 +26,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                   @foreach($logado as $log)
-                        <tr data-entry-id="{{ $log['name'] }}">
+                
+
+                   @foreach($logado as $log => $logado)
+                    @if($logado['name'] == $nominho)
+                        <tr>
                             <td>
-                                {{ $log['name'] }}
+                                {{ $logado['name'] }}
                             </td>
                             <td>
-                                {{ $log['email'] }}
+                                {{ $logado['email'] }}
                             </td>
                             <td>
-                                {{ $log['last_login_at'] }}
+                                {{ $logado['last_login_at'] }}
                             </td>
 
                         </tr>
+                        
+                    @endif
                     @endforeach
                 </tbody>
             </table>

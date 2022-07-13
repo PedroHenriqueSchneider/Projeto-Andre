@@ -10,6 +10,7 @@ use App\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use DB;
 
 class UsersApiController extends Controller
 {
@@ -37,6 +38,7 @@ class UsersApiController extends Controller
         return new UserResource($user->load(['roles']));
     }
 
+    // Admin atualiza os dados do usuário.
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->all());
@@ -47,6 +49,7 @@ class UsersApiController extends Controller
             ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
+    // Admin exclui os dados do usuário. Basicamente torna-o inativo.
     public function destroy(User $user)
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');

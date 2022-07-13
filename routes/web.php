@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('users', 'UsersController');
     // Historic
     Route::resource('historics', 'HistoricsController');
+
 });
 
     // Route::namespace('Admin')->group(function(){

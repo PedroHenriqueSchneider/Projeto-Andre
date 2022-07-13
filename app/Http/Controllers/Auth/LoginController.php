@@ -63,7 +63,7 @@ class LoginController extends Controller
             'last_login_ip' => $request->getClientIp()
         ]);
         DB::insert('INSERT INTO historics (name, email, last_login_at, id) VALUES (?, ?, ?, ?)', [$user->name, $user->email, $user->last_login_at, $user->id]);
+        DB::table('users')->where('name', $user->name)->update(['ativo' => 1]);
         
     }
-
 }

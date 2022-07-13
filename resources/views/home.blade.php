@@ -5,7 +5,7 @@
 
 
 <div>
-    
+  <?php echo "Olá ". $name . ". Seu último login foi " . $login ?>
 </div>
 @endsection
 @section('scripts')
